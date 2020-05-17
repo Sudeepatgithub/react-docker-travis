@@ -7,3 +7,15 @@ before_install:
 language: generic
 script: 
     - docker run -e CI=true sudeep51/react-frontend npm run test -- --coverage
+
+deploy:
+    provider: elasticbeanstalk
+    region: "eu-west-1"
+    app: "docker-react"
+    env: "DockerReact-env"
+    bucket_name: "elasticbeanstalk-eu-west-1-135118745174"
+    bucket_path: "docker-react"
+    on:
+        branch: master
+
+
